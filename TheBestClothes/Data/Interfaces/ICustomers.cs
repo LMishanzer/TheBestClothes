@@ -11,7 +11,6 @@ namespace TheBestClothes.Data.Interfaces
         Task<IEnumerable<Customer>> GetAllCustomersAsync();
         IEnumerable<Customer> GetCustomersFromInterval(DateTime start, DateTime end);
         Task<IEnumerable<Customer>> GetCustomersFromIntervalAsync(DateTime start, DateTime end);
-        void AddCustomer(Customer customer);
         void AddCustomers(IEnumerable<Customer> customers);
     }
 }

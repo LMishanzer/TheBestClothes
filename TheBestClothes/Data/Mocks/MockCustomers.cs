@@ -42,16 +42,10 @@ namespace TheBestClothes.Data.Mocks
                 .ToListAsync();
         }
 
-        public async void AddCustomer(Customer customer)
+        public void AddCustomers(IEnumerable<Customer> customers)
         {
-            await _context.Customers.AddAsync(customer);
-            await _context.SaveChangesAsync();
-        }
-
-        public async void AddCustomers(IEnumerable<Customer> customers)
-        {
-            await _context.Customers.AddRangeAsync(customers);
-            await _context.SaveChangesAsync();
+            _context.Customers.AddRange(customers);
+            _context.SaveChanges();
         }
     }
 }

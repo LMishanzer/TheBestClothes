@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TheBestClothes.Data.Interfaces;
@@ -45,10 +44,11 @@ namespace TheBestClothes.Controllers
             }
         }
 
-        // POST api/<CustomersController>
+        //POST api/<CustomersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(IEnumerable<Customer> customers)
         {
+            _customers.AddCustomers(customers);
         }
     }
 }
