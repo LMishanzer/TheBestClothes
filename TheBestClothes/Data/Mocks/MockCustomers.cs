@@ -8,8 +8,14 @@ using TheBestClothes.Models;
 
 namespace TheBestClothes.Data.Mocks
 {
+    /// <summary>
+    /// Class for working with database
+    /// </summary>
     public class MockCustomers : ICustomers
     {
+        /// <summary>
+        /// Database instance
+        /// </summary>
         private readonly CustomersContext _context;
 
         public MockCustomers(CustomersContext context)

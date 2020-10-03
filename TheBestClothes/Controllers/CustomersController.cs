@@ -12,6 +12,9 @@ namespace TheBestClothes.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        /// <summary>
+        /// Instance working with storage
+        /// </summary>
         private readonly ICustomers _customers;
 
         public CustomersController(ICustomers customers)
@@ -19,6 +22,10 @@ namespace TheBestClothes.Controllers
             _customers = customers;
         }
 
+        /// <summary>
+        /// Returns all customers from storage
+        /// </summary>
+        /// <returns>List of all saved customers</returns>
         // GET: api/<CustomersController>
         [HttpGet]
         public async Task<IEnumerable<Customer>> Get()
@@ -26,6 +33,12 @@ namespace TheBestClothes.Controllers
             return await _customers.GetAllCustomersAsync();
         }
 
+        /// <summary>
+        /// Returns customers from a time interval
+        /// </summary>
+        /// <param name="start">Start of the interval</param>
+        /// <param name="end">End of the interval</param>
+        /// <returns>List of customers</returns>
         // GET api/<CustomersController>/5
         [HttpGet("{start}/{end}")]
         public async Task<IEnumerable<Customer>> Get(string start, string end)
@@ -44,6 +57,10 @@ namespace TheBestClothes.Controllers
             }
         }
 
+        /// <summary>
+        /// Takes list of customers and saves them to the storage
+        /// </summary>
+        /// <param name="customers">List of customers</param>
         //POST api/<CustomersController>
         [HttpPost]
         public void Post(IEnumerable<Customer> customers)
