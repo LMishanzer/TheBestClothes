@@ -10,7 +10,7 @@ namespace TheBestClothes.Models
         public int Id { get; set; }
         public DateTime VisitDateTime { get; set; }
         public int Age { get; set; }
-        public bool IsSatisfied { get; set; }
+        public bool WasSatisfied { get; set; }
         public char Sex { get; set; }
     }
 }
