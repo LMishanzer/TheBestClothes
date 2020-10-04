@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using TheBestClothes.Data.Interfaces;
 using TheBestClothes.Data.Mocks;
 using TheBestClothes.Models;
+using Microsoft.OpenApi.Models;
 
 namespace TheBestClothes
 {
@@ -26,6 +27,15 @@ namespace TheBestClothes
             services.AddDbContext<CustomersContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("Customers")));
             services.AddTransient<ICustomers, MockCustomers>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Customers API",
+                    Description = "API for processing customers in a database"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +45,14 @@ namespace TheBestClothes
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Customers API V1");
+                c.RoutePrefix = "";
+            });
 
             app.UseHttpsRedirection();
 

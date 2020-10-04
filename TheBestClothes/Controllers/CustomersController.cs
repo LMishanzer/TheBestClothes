@@ -43,18 +43,11 @@ namespace TheBestClothes.Controllers
         [HttpGet("{start}/{end}")]
         public async Task<IEnumerable<Customer>> Get(string start, string end)
         {
-            try
-            {
-                var culture = CultureInfo.CreateSpecificCulture("en-EN");
-                DateTime startTime = DateTime.Parse(start, culture);
-                DateTime endTime = DateTime.Parse(end, culture);
+            var culture = CultureInfo.CreateSpecificCulture("en-EN");
+            DateTime startTime = DateTime.Parse(start, culture);
+            DateTime endTime = DateTime.Parse(end, culture);
 
-                return await _customers.GetCustomersFromIntervalAsync(startTime, endTime);
-            }
-            catch (FormatException e)
-            {
-                return null;
-            }
+            return await _customers.GetCustomersFromIntervalAsync(startTime, endTime);
         }
 
         /// <summary>
