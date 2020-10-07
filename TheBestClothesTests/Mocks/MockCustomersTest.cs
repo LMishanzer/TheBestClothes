@@ -10,7 +10,7 @@ namespace TheBestClothesTests.Mocks
 {
     class MockCustomersTest : ICustomers
     {
-        private readonly List<Customer> _customers = new List<Customer>
+        public List<Customer> Customers { get; private set; } = new List<Customer>
         {
             new Customer
             {
@@ -40,28 +40,34 @@ namespace TheBestClothesTests.Mocks
 
         public IEnumerable<Customer> GetAllCustomers()
         {
-            return _customers;
-        }
-
-        public Task<IEnumerable<Customer>> GetAllCustomersAsync()
-        {
-            return Task.Run(GetAllCustomers);
+            return Customers.ToList();
         }
 
         public IEnumerable<Customer> GetCustomersFromInterval(DateTime start, DateTime end)
         {
-            return _customers.Where(customer => customer.VisitDateTime >= start
-                                                && customer.VisitDateTime <= end);
+            return Customers.Where(customer => customer.VisitDateTime >= start
+                                                && customer.VisitDateTime <= end)
+                .ToList();
         }
 
-        public Task<IEnumerable<Customer>> GetCustomersFromIntervalAsync(DateTime start, DateTime end)
+        public bool AddCustomers(IEnumerable<Customer> customers)
         {
-            return Task.Run(() => GetCustomersFromInterval(start, end));
-        }
+            foreach (var customer in customers)
+            {
+                if (customer.Sex != 'M' && customer.Sex != 'F')
+                    return false;
+            }
 
-        public void AddCustomers(IEnumerable<Customer> customers)
-        {
-            _customers.AddRange(customers);
+            try
+            {
+                Customers.AddRange(customers);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

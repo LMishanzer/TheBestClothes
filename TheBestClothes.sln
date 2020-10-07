@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBestClothes", "TheBestClothes\TheBestClothes.csproj", "{7C8F9427-CBD5-4475-B803-2F53C5F5BCC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBestClothesTests", "TheBestClothesTests\TheBestClothesTests.csproj", "{83CCFD61-D453-4529-9511-6392615C628C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheBestClothesTests", "TheBestClothesTests\TheBestClothesTests.csproj", "{83CCFD61-D453-4529-9511-6392615C628C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{604657BE-95FE-4C70-B48F-9DA7FD1B8B03}"
+	ProjectSection(SolutionItems) = preProject
+		README.MD = README.MD
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
